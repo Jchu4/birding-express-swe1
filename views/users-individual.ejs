@@ -12,20 +12,22 @@
     <div class="container">
       <div class="row pt-4">
         <div class="col">
-          <h1>Community Notes Collection</h1>
-          <h3 class="lead text-muted pb-4">All Sightings</h3>
+          <h1>My Notes Collection</h1>
+          <h3 class="lead text-muted pb-4">
+            <%= sightingsList[0].name %>'s Sightings List
+          </h3>
           <!-- Start of sectioning 3x3 -->
           <div class="row">
             <!-- Start of Sightings List -->
-            <% sightingsList.forEach((sighting) => { %>
+            <% sightingsList.forEach((sighting, index) => { %>
             <div class="col-xs-12 col-sm-6 col-md-4">
               <div class="card border-dark mb-3" style="max-width: 18rem">
                 <div class="card-header">
                   <a href="/note/<%= sighting.id%>"
-                    >Sighting #<%= sighting.id%></a
+                    >Sighting #<%= index + 1 %></a
                   >
                 </div>
-                <div class="card-body text-dark" style="height:11rem">
+                <div class="card-body text-dark" style="height: 11rem">
                   <h5 class="card-title"><%= sighting.habitat %></h5>
                   <p id="card-text-overflow" class="card-text">
                     <%= sighting.behaviour %>

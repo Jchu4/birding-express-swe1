@@ -131,6 +131,7 @@
         <!-- End of Note -->
         <div class="row py-3">
           <div class="col-8 col-sm-7 pl-0">
+          <% if (userId === id) { %>
             <!-- Start of Edit Button -->
             <button
               type="submit"
@@ -153,6 +154,16 @@
           </div>
         </div>
         <!-- End of Delete Button -->
+            <% } else { %>
+  
+      <div class="row">
+        <div class="col ">
+          <span class="text-danger font-weight-light font-italic">Submitted by <%= sightingNotes.name %>, unable to edit note.</span>
+        </div>
+
+    </div>
+   <% } %>
+
       </div>
     </form>
 

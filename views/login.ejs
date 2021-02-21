@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Login</title>
+  </head>
+  <body>
+    <%- include('navbar') -%>
+
+    <div class="container w-75">
+      <div class="row">
+        <div class="col">
+          <h1 class="pt-4">Log in</h1>
+          <h3 class="pb-4 lead text-muted">Welcome back!</h3>
+          <!-- Start of Sign Up Form -->
+          <form method="POST" action="/login">
+            <!-- Email -->
+            <div class="form-group whole-input">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control shadow-none"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group whole-input">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control shadow-none"
+                id="password"
+                name="password"
+                placeholder="*******"
+              />
+            </div>
+
+            <!-- Sign up button -->
+            <button type="submit" class="pt-2 btn btn-block btn-dark mt-5">
+              Log in
+            </button>
+          </form>
+          <!-- End of Sign Up Form -->
+        </div>
+      </div>
+      <div class="row py-3">
+        <div class="col">
+          <p class="text-muted text-center font-weight-light">
+            Don't have an account?
+            <a class="text-muted" href="/signup"><u>Sign up</u></a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>

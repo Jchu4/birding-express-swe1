@@ -46,3 +46,15 @@ input {
   padding: 0px;
   height: inherit;
 }
+
+#card-text-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#logout {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
