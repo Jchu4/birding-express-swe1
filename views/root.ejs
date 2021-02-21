@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('navbar') -%>
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col">
+          <h1>My Notes Collection</h1>
+          <h3 class="lead pb-4">Sightings List</h3>
+          <!-- Start of sectioning 3x3 -->
+          <div class="row">
+            <!-- Start of Sightings List -->
+            <% sightingsList.forEach(sighting => { %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card border-dark mb-3" style="max-width: 18rem">
+                <div class="card-header">
+                  <a href="/note/<%= sighting.id%>"
+                    >Sighting #<%= sighting.id%></a
+                  >
+                </div>
+                <div class="card-body text-dark">
+                  <h5 class="card-title">Dark card title</h5>
+                  <p class="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+            <!-- End of Sightings List -->
+          </div>
+          <!-- End of sectioning 3x3 -->
+        </div>
+      </div>
+    </div>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>

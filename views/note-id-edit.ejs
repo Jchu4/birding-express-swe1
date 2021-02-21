@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Editing Note #<%= sightingNotes.id%></title>
+  </head>
+  <body>
+    <!-- Start of Navbar-->
+    <%- include('navbar') -%>
+    <!-- End of Navbar-->
+
+    <form method="POST" action="/note/<%=sightingNotes.id%>/edit">
+      <!-- Start of Note -->
+      <div class="container w-75 my-3">
+        <div class="row pt-3 my-3">
+          <h1 class="col text-center text-secondary">
+            Bird Sighting Note #<%= sightingNotes.id%>
+          </h1>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 pl-0">
+            <!-- Start of Cards -->
+            <!-- Start of Card 1 -->
+            <div class="card border-dark mb-3 card-control">
+              <div class="card-header"></div>
+              <div class="card-body text-dark">
+                <h5 class="card-title">Habitat</h5>
+                <input
+                  class="card-text form-control note-input shadow-none text-primary"
+                  name="habitat"
+                  style="padding: 0px"
+                  autofocus="autofocus"
+                  value="<%= sightingNotes.habitat%>"
+                />
+              </div>
+            </div>
+            <!-- End of Card 1 -->
+            <!-- Start of Card 2 -->
+            <div class="card border-dark mb-3 card-control-two">
+              <div class="card-header"></div>
+              <div class="card-body text-dark">
+                <div class="row">
+                  <div class="col-5">
+                    <h5 class="card-title">Duration</h5>
+                    <input
+                      class="card-text form-control note-input shadow-none text-primary"
+                      name="duration"
+                      style="padding: 0px"
+                      value="<%= sightingNotes.duration%>"
+                    />
+                  </div>
+                  <div class="ml-3 vertical-line"></div>
+                  <div class="col-5">
+                    <h5 class="card-title">Flocksize</h5>
+                    <input
+                      class="card-text form-control note-input shadow-none text-primary"
+                      style="padding: 0px"
+                      name="flocksize"
+                      value="<%= sightingNotes.flocksize%>"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Card 2 -->
+          </div>
+          <div class="col-sm-6 pl-0">
+            <!-- Start of Card 3 -->
+            <div class="card border-dark mb-3 card-control">
+              <div class="card-header"></div>
+              <div class="card-body text-dark">
+                <h5 class="card-title">Behaviour</h5>
+                <input
+                  class="card-text form-control note-input shadow-none text-primary"
+                  style="padding: 0px"
+                  name="behaviour"
+                  value="<%= sightingNotes.behaviour%>"
+                />
+              </div>
+            </div>
+            <!-- End of Card 3 -->
+            <!-- Start of Card 4 -->
+            <div class="card border-dark mb-3 card-control-two">
+              <div class="card-header"></div>
+              <div class="card-body text-dark">
+                <div class="row">
+                  <div class="col-3">
+                    <h5 class="card-title">Date</h5>
+                    <p class="card-text text-primary">
+                      <input
+                        class="card-text form-control note-input shadow-none text-primary"
+                        style="padding: 0px"
+                        name="date"
+                        value="<%= sightingNotes.date%>"
+                      />
+                    </p>
+                  </div>
+                  <div class="vertical-line"></div>
+                  <div class="col-3">
+                    <h5 class="card-title">Time</h5>
+                    <p class="card-text">
+                      <input
+                        class="card-text form-control note-input shadow-none text-primary"
+                        style="padding: 0px"
+                        name="time"
+                        value="<%= sightingNotes.time%>"
+                      />
+                    </p>
+                  </div>
+                  <div class="vertical-line"></div>
+                  <div class="col-4">
+                    <h5 class="card-title">Day</h5>
+                    <p class="card-text">
+                      <input
+                        class="card-text form-control note-input shadow-none text-primary"
+                        style="padding: 0px"
+                        name="day"
+                        value="<%= sightingNotes.day%>"
+                      />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Card 4 -->
+          </div>
+        </div>
+        <!-- End of Note -->
+        <div class="row py-3">
+          <div class="col-8 col-sm-7 pl-0">
+            <!-- Start of Edit Button -->
+            <button
+              type="submit"
+              formaction="/note/<%=sightingNotes.id%>/edit?_method=PUT"
+              class="btn btn-lg btn-block btn-outline-secondary"
+              value="PUT"
+            >
+              Edit Complete
+            </button>
+          </div>
+          <div class="col-4 col-sm-5 pl-0">
+            <button
+              type="submit"
+              formaction="/note/<%=sightingNotes.id%>/edit?_method=DELETE"
+              class="btn btn-lg btn-block btn-outline-danger"
+              value="DELETE"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <!-- End of Delete Button -->
+      </div>
+    </form>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>

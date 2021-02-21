@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Note #<%= sightingNotes.id%></title>
+  </head>
+  <body>
+    <!-- Start of Navbar-->
+    <%- include('navbar') -%>
+    <!-- End of Navbar-->
+
+    <!-- Start of Note -->
+    <div class="container w-75 mt-3">
+      <div class="row pt-3 my-3">
+        <h1 class="col text-center">
+          Bird Sighting Note #<%= sightingNotes.id%>
+        </h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 pl-0">
+          <!-- Start of Cards -->
+          <!-- Start of Card 1 -->
+          <div class="card border-dark mb-3 card-control">
+            <div class="card-header"></div>
+            <div class="card-body text-dark">
+              <h5 class="card-title pb-1">Habitat</h5>
+              <p class="card-text"><%= sightingNotes.habitat %></p>
+            </div>
+          </div>
+          <!-- End of Card 1 -->
+          <!-- Start of Card 2 -->
+          <div class="card border-dark mb-3 card-control-two">
+            <div class="card-header"></div>
+            <div class="card-body text-dark">
+              <div class="row">
+                <div class="col-5">
+                  <h5 class="card-title pb-1">Duration</h5>
+                  <p class="card-text"><%= sightingNotes.duration %></p>
+                </div>
+                <div class="ml-3 vertical-line"></div>
+                <div class="col-5">
+                  <h5 class="card-title pb-1">Flocksize</h5>
+                  <p class="card-text"><%= sightingNotes.flocksize %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Card 2 -->
+        </div>
+        <div class="col-sm-6 pl-0">
+          <!-- Start of Card 3 -->
+          <div class="card border-dark mb-3 card-control">
+            <div class="card-header"></div>
+            <div class="card-body text-dark">
+              <h5 class="card-title pb-1">Behaviour</h5>
+              <p class="card-text"><%= sightingNotes.behaviour %></p>
+            </div>
+          </div>
+          <!-- End of Card 3 -->
+          <!-- Start of Card 4 -->
+          <div class="card border-dark mb-3 card-control-two">
+            <div class="card-header"></div>
+            <div class="card-body text-dark">
+              <div class="row">
+                <div class="col-3">
+                  <h5 class="card-title pb-1">Date</h5>
+                  <p class="card-text"><%= sightingNotes.date %></p>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="col-3">
+                  <h5 class="card-title pb-1">Time</h5>
+                  <p class="card-text"><%= sightingNotes.time %></p>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="col-4">
+                  <h5 class="card-title pb-1">Day</h5>
+                  <p class="card-text"><%= sightingNotes.day %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Card 4 -->
+        </div>
+      </div>
+      <!-- End of Note -->
+    </div>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>
