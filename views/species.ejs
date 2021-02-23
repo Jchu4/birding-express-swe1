@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%- include('head-links') -%>
+  <title>Record New Species</title>
+</head>
+<body>
+  <%- include('navbar') -%>
+  <div class="container w-75">
+    <h1 class="pt-4">Submit New Species</h1>
+    <h2 class="lead pt-4">Common Name</h2>
+        <!-- Start of Form -->
+        <form method="POST" action="/species" >
+          <!-- Common Name -->
+    <div class="row">
+      <div class="col">
+        <div class="form-group whole-input">
+          <input type="text" class="form-control shadow-none" name="commonName" placeholder="Create new...">
+        </div>
+      </div>
+    </div>
+
+    <!-- Scientific Name -->
+    <h2 class="lead pt-4">Scientific Name</h2>
+    <div class="row">
+      <div class="col">
+       <div class="form-group whole-input">
+        <input type="text" class="form-control shadow-none" name="scienceName" placeholder="Create new...">
+       </div>
+      </div>
+    </div> 
+
+    <!-- Submit Btn --> 
+    <div class="row pt-4">
+      <div class="col">
+        <button type="submit" class="btn btn-lg btn-block btn-secondary" value="Submit">Submit</button>
+      </div> 
+    </div>  
+      </form>
+      <!-- End of Form -->
+  </div>
+
+ <%- include('bootstrap-scripts') -%>
+</body>
+</html>

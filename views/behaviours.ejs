@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('navbar') -%>
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col">
+          <h1>All Behaviours Observed</h1>
+          <h3 class="lead text-muted pb-4">so far...</h3>
+          <div class="row">
+            <!-- Start of Sightings List -->
+            <% behaviourArr.forEach((behaviour, index) => { %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                  <a href=""><h4 class="text-muted py-1"><%= behaviour.name %> </h4></a>
+                  <ul class="list-group py-2">
+                      <li class="list-group-item"><a href="/note/<%=behaviour.notes_id%>">Note #<%=behaviour.notes_id%> </a></li>
+                  </ul>   
+              </div>  
+            <% }) %>   
+            </div>
+            <!-- End of Sightings List -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include('head-links') -%>
-    <title>Note #<%= sightingNotes.id%></title>
+    <title>Note #<%=sightingNotes.id%></title>
   </head>
   <body>
     <!-- Start of Navbar-->
@@ -16,7 +16,7 @@
     <div class="container w-75 mt-3">
       <div class="row pt-3 my-3">
         <h1 class="col text-center">
-          Bird Sighting Note #<%= sightingNotes.id%>
+          Bird Sighting Note #<%=sightingNotes.id%>
         </h1>
       </div>
       <div class="row">
@@ -27,7 +27,7 @@
             <div class="card-header"></div>
             <div class="card-body text-dark">
               <h5 class="card-title pb-1">Habitat</h5>
-              <p class="card-text"><%= sightingNotes.habitat %></p>
+              <p class="card-text"><%=sightingNotes.habitat %></p>
             </div>
           </div>
           <!-- End of Card 1 -->
@@ -38,12 +38,12 @@
               <div class="row">
                 <div class="col-5">
                   <h5 class="card-title pb-1">Duration</h5>
-                  <p class="card-text"><%= sightingNotes.duration %></p>
+                  <p class="card-text"><%=sightingNotes.duration %></p>
                 </div>
                 <div class="ml-3 vertical-line"></div>
                 <div class="col-5">
                   <h5 class="card-title pb-1">Flocksize</h5>
-                  <p class="card-text"><%= sightingNotes.flocksize %></p>
+                  <p class="card-text"><%=sightingNotes.flocksize %></p>
                 </div>
               </div>
             </div>
@@ -67,17 +67,17 @@
               <div class="row">
                 <div class="col-3">
                   <h5 class="card-title pb-1">Date</h5>
-                  <p class="card-text"><%= sightingNotes.date %></p>
+                  <p class="card-text"><%=sightingNotes.date %></p>
                 </div>
                 <div class="vertical-line"></div>
                 <div class="col-3">
                   <h5 class="card-title pb-1">Time</h5>
-                  <p class="card-text"><%= sightingNotes.time %></p>
+                  <p class="card-text"><%=sightingNotes.time %></p>
                 </div>
                 <div class="vertical-line"></div>
                 <div class="col-4">
                   <h5 class="card-title pb-1">Day</h5>
-                  <p class="card-text"><%= sightingNotes.day %></p>
+                  <p class="card-text"><%=sightingNotes.day %></p>
                 </div>
               </div>
             </div>
@@ -87,6 +87,41 @@
       </div>
       <!-- End of Note -->
     </div>
+
+    <!-- Start of Comments Form Section -->
+      <div class="container w-75 py-5">
+        <h1 class="text-muted py-3"> Comments: </h1>
+        <form method="POST" action="/note/<%=id%>/comment">
+          <div class="row form-group whole-input">
+            <div class="col-11">
+              <input type="text" class="form-control shadow-none" name="newComment" placeholder="Write comment..." style="height: 50px">
+            </div>  
+            <div class="col-1 d-flex vertical-align-center">
+              <button type="submit" style="border: 0; background: transparent">
+                <img src='/public/send.png' width="20" height="20">
+              </button>
+            </div>
+          </div>
+        </form>
+     <!-- End of Comments Form Section -->
+
+    <!-- Start of Comments Section -->
+        <div class="row">
+          <div class="col">
+            
+            <% commentsArr.forEach(comment => { %>
+            <ul class="list-group py-1">
+              <label class="pt-4 pb-1 font-weight-light font-italic">Date</label>
+              <li class="list-group-item d-flex justify-content-between align-items-center ">
+                <%=comment.description%>
+                <span class="badge badge-secondary badge-pill"><%=comment.name%></span>
+            </ul>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    <!-- End of Comments Section -->
+
 
     <%- include('bootstrap-scripts') -%>
   </body>

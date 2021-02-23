@@ -34,21 +34,41 @@
             <div class="form-row">
               <div class="form-group whole-input col col-md-3 mx-2">
                 <label for="duration">Sighting Duration</label>
-                <input class="form-control shadow-none" name="duration" />
+                <input class="form-control shadow-none" name="duration" type="number"/>
               </div>
-              <div class="form-group whole-input col-md-8 mx-2">
+              <div class="form-group whole-input col col-md-8 mx-1">
                 <label for="behaviour">Behaviour</label>
                 <input class="form-control shadow-none" name="behaviour" />
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group whole-input col-8 col-md-9 mx-2">
+              <div class="form-group whole-input col-7 col-md-5 mx-1">
                 <label for="habitat">Habitat</label>
                 <input class="form-control shadow-none" name="habitat" />
               </div>
-              <div class="form-group whole-input col-3 col-md-2 mx-1">
+              <div class="form-group whole-input col-4 col-md-2 mx-1">
                 <label for="flocksize">Flock Size</label>
-                <input class="form-control shadow-none" name="flocksize" />
+                <input class="form-control shadow-none" name="flocksize" type="number"/>
+              </div>
+              <!-- Start of Species Selection -->
+              <div class="form-group whole-input col col-md-4 mx-1">
+                <label for="species_id">Select Species</label>
+                <select class="form-control shadow-none" name="species_id" type="number">
+                  <% birdSpeciesArr.forEach((species) => { %>
+                  <option value="<%=species.id%>"><%= species.name %></option>
+                  <% }); %>
+                </select>
+              </div>
+              <!-- End of Species Selection -->
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-check form-check-inline">
+                    <% behaviourArr.forEach((behaviour) => { %>
+                    <label class="form-check-label"><%= behaviour.name %></label>
+                    <input class="form-check-input" type="checkbox" name="behaviour_id" value="<%= behaviour.id %>" />
+                    <% }); %>
+                </div>
               </div>
             </div>
             <!-- Submit Btn -->

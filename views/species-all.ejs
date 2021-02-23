@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('head-links') -%>
+    <title>Home</title>
+  </head>
+  <body>
+    <%- include('navbar') -%>
+    <div class="container">
+      <div class="row pt-4">
+        <div class="col">
+          <h1>All Species Sighted</h1>
+          <h3 class="lead text-muted pb-4">so far...</h3>
+          <div class="row">
+            <!-- Start of Sightings List -->
+            <% notesArr.forEach((note, index) => { %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                   <% if (note.name === uniqueSpeciesArr[index]) { %>
+                  <a href="/species/<%=note.species_id%>"><h4 class="text-muted py-1"><%= note.name %> </h4></a>
+                    <% } %>
+                  <ul class="list-group py-2">
+                      <li class="list-group-item"><a href="/note/<%= note.notes_id %>">Sighting #<%= note.notes_id %></a></li>
+                    
+                  </ul>   
+              </div>  
+            <% }) %>   
+          </div>
+           
+            <!-- End of Sightings List -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('bootstrap-scripts') -%>
+  </body>
+</html>
