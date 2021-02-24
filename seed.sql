@@ -63,7 +63,7 @@ VALUES
     (7, 1);
 
 
-INSERT INTO (user_id, note_id, description)
+INSERT INTO comments (user_id, note_id, description)
 VALUES 
     (2, 1, 'Which area is this at?'),
     (1, 1, 'Near greenwood, they appear only in the mornings.'),
