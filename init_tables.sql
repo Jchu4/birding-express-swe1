@@ -1,4 +1,4 @@
-CREATE TABLE notes (
+CREATE TABLE IF NOT EXISTS notes (
   id SERIAL PRIMARY KEY,
   date TEXT,
   time TEXT,
@@ -11,31 +11,31 @@ CREATE TABLE notes (
   species_id INT
 );
 
-CREATE TABLE users (
+CREATE TABLE  IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   email TEXT,
   password TEXT
 );
 
-CREATE TABLE spcies (
+CREATE TABLE  IF NOT EXISTS species (
   id SERIAL PRIMARY KEY,
   name TEXT,
   scientific_name TEXT
 );
 
 
-CREATE TABLE behaviour (
+CREATE TABLE IF NOT EXISTS behaviour (
   id SERIAL PRIMARY KEY,
   name TEXT
 );
 
-CREATE TABLE notes_behaviour (
+CREATE TABLE IF NOT EXISTS notes_behaviour (
   id SERIAL PRIMARY KEY,
   notes_id INT,
   behaviour_id INT
 );
 
-CREATE TABLE comments (
+CREATE TABLE  IF NOT EXISTS comments (
   id SERIAL PRIMARY KEY,
   user_id INT,
   note_id INT,
