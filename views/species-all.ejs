@@ -16,20 +16,18 @@
           <h3 class="lead text-muted pb-4">so far...</h3>
           <div class="row">
             <!-- Start of Sightings List -->
-            <% notesArr.forEach((note, index) => { %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                   <% if (note.name === uniqueSpeciesArr[index]) { %>
-                  <a href="/species/<%=note.species_id%>"><h4 class="text-muted py-1"><%= note.name %> </h4></a>
-                    <% } %>
+            <% Object.entries(speciesObj).forEach(([speciesName, notes]) => {  %>
+              <div class="col-xs-12 col-sm-6 col-md-4 pt-3">
+                  <a href="<%=notes[0].species_id%>"><h4 class="text-muted py-1"><%= speciesName %> </h4></a>
                   <ul class="list-group py-2">
-                      <li class="list-group-item"><a href="/note/<%= note.notes_id %>">Sighting #<%= note.notes_id %></a></li>
-                    
-                  </ul>   
+                    <% notes.forEach(sighting => {  %>
+                      <li class="list-group-item"><a href="/note/<%=sighting.notes_id%>">Sighting #<%=sighting.notes_id%></a></li>
+                    <% }) %>
+                  </ul>     
               </div>  
-            <% }) %>   
+           <% }) %>
           </div>
-           
-            <!-- End of Sightings List -->
+          <!-- End of Sightings List -->
           </div>
         </div>
       </div>

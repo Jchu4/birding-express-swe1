@@ -15,17 +15,19 @@
           <h1>All Behaviours Observed</h1>
           <h3 class="lead text-muted pb-4">so far...</h3>
           <div class="row">
-            <!-- Start of Sightings List -->
-            <% behaviourArr.forEach((behaviour, index) => { %>
-              <div class="col-xs-12 col-sm-6 col-md-4">
-                  <a href=""><h4 class="text-muted py-1"><%= behaviour.name %> </h4></a>
-                  <ul class="list-group py-2">
-                      <li class="list-group-item"><a href="/note/<%=behaviour.notes_id%>">Note #<%=behaviour.notes_id%> </a></li>
+            <!-- Start of Behaviours List -->
+            <% Object.entries(behaviourObj).forEach(([behaviour, notesArr]) => { %>
+              <div class="col-xs-12 col-sm-6 col-md-4 pt-3">
+                  <a href="/behaviours/<%=notesArr[0].behaviour_id%>"><h4 class="text-muted py-1"><%= behaviour %> </h4></a>
+                  <ul class="list-group py-1">
+                   <% notesArr.forEach(note => { %>
+                      <li class="list-group-item"><a href="/note/<%=note.notes_id%>">Sighting #<%=note.notes_id%> </a></li>
+                     <% }) %> 
                   </ul>   
               </div>  
             <% }) %>   
             </div>
-            <!-- End of Sightings List -->
+            <!-- End of Behaviours List -->
           </div>
         </div>
       </div>

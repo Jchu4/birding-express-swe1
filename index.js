@@ -264,8 +264,14 @@ app.delete('/note/:id/edit', (req, res) => {
 
 // Root - GET. 
 app.get('/', (req, res) => {
-  // Verify Login cookie.
   console.log('/ root GET request came in! ---');
+
+  // Verify Login cookie.
+  const { userId } = req.cookies;
+
+  if (!userId) {
+    res.redirect('/login')
+  } 
 
   const sqlQuery = `
   SELECT *
@@ -445,7 +451,11 @@ app.get('/species/all', (req, res) => {
   console.log('/species/all GET request came in! ---')
 
   const joinQuery = `
-  SELECT notes.id AS notes_id, species.id AS species_id, species.name, notes.user_id
+  SELECT 
+    notes.id AS notes_id, 
+    species.id AS species_id, 
+    species.name AS species_name, 
+    notes.user_id
   FROM notes
   INNER JOIN species ON notes.species_id = species.id
   `
@@ -456,14 +466,22 @@ app.get('/species/all', (req, res) => {
     }
 
     const notesArr = joinQueryResult.rows;
-    const uniqueSpeciesArr = [];
-    for (let i = 0; i < notesArr.length; i ++) {
-      if (!uniqueSpeciesArr.includes(notesArr[i].name)) {
-        uniqueSpeciesArr.push(notesArr[i].name);
-      };
+    let speciesObj = {};
+
+    // Display species name along with the rest of the relevant sightings.
+    for (let i = 0; i < notesArr.length; i += 1) {
+      const speciesName = notesArr[i].species_name;
+      const restOfNotes =  { 'notes_id' : notesArr[i].notes_id, 'species_id' : notesArr[i].species_id, 'user_id' : notesArr[i].user_id };
+
+      if (!speciesObj[speciesName]) {
+        speciesObj[speciesName] = [];
+      }
+      speciesObj[speciesName].push(restOfNotes);
     }
 
-    res.render('species-all', { notesArr, uniqueSpeciesArr });
+    console.log(speciesObj)
+
+    res.render('species-all', { speciesObj });
   });
 });
 
@@ -472,7 +490,7 @@ app.get('/species/:index', (req, res) => {
   console.log('/species/:index GET request came in! ---')
 
   const { index } = req.params;
-
+   
   const joinQuery = `
   SELECT 
     notes.id AS notes_id, 
@@ -481,7 +499,7 @@ app.get('/species/:index', (req, res) => {
     notes.day, 
     notes.duration,
     notes.habitat,
-    notes.behaviour,
+    notes.behaviour, 
     notes.species_id,
     species.name,
     species.scientific_name
@@ -587,7 +605,7 @@ app.get('/behaviours', (req, res) => {
   console.log('/behaviours GET request came in! ---');
 
   const getBehavioursQuery = `
-    SELECT behaviour.name, notes_behaviour.notes_id
+    SELECT behaviour.id, behaviour.name, notes_behaviour.notes_id
     FROM behaviour
     INNER JOIN notes_behaviour ON behaviour.id = notes_behaviour.behaviour_id
    `
@@ -596,10 +614,23 @@ app.get('/behaviours', (req, res) => {
       console.log('getBehavioursQuery error: ---', err);
     }
 
-    const behaviourArr = result.rows;
-    console.log(behaviourArr)
+    const behaviourArr  = result.rows;
+    const behaviourObj = {}
 
-    res.render('behaviours', { behaviourArr })
+    for (let i = 0; i < behaviourArr.length; i++) {
+      const behaviourName = behaviourArr[i].name;
+      const restOfNotes = { 'behaviour_id' : behaviourArr[i].id, 'notes_id' : behaviourArr[i].notes_id }
+      
+      if (!behaviourObj[behaviourName]) {
+        console.log("My condition: ", !behaviourObj[behaviourName]);
+        behaviourObj[behaviourName] = [];
+      }
+      behaviourObj[behaviourName].push(restOfNotes);
+    }
+
+    console.log("NEW", behaviourObj)
+
+    res.render('behaviours', { behaviourArr, behaviourObj })
   });
 });
 

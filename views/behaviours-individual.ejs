@@ -9,13 +9,13 @@
   </head>
   <body>
     <%- include('navbar') -%>
-    <div class="container">
+    <div class="container w-75">
 
       <div class="row pt-4">
         <div class="col-7">
           <h1><%=behaviourArr[0].name%></h1>
           <h5 class="lead text-muted pb-4 font-italic">
-           Test
+           Instances of exhibited behaviour
           </h5>
         </div> 
       </div>  
@@ -28,7 +28,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-9">
-                    <%= behaviour.name %> Note #
+                    <%= behaviour.name %> Note #<%=index + 1%>
                   </div> 
                   <div class="col-3 ml-auto text-right">
                     <a href="">
